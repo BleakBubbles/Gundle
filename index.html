@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gundle</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body onload="randomGun()">
+    <div class="game-container">
+        <div class="title-container">
+            <img src="gundle.png" , alt="", width="400px">
+        </div>
+        <div class="input-container">
+            <div class="input">
+                <a class="wiki-link", href = "https://enterthegungeon.fandom.com/wiki/Guns", target="_blank", rel="noopener noreferrer">
+                    <img id = "gun-icon" src = "gun_icon.png" alt = "" border = "0" width = "60px"/>
+                </a>
+                <input type="text" id="guess-field" autofocus="true" placeholder="Enter the Gun" onblur="removeElements()">
+                <button id="guess-button" onclick="guess()">
+                    <img class="arrow" src="arrow_2.png" alt="" border="0" height="40px"/>
+                </button>
+            </div>
+            <div class="list"></div>
+        </div>
+        <div class="header-container">
+            <div class="header-tile">
+                Gun
+            </div>
+            <div class="header-tile">
+                Quality
+            </div>
+            <div class="header-tile">
+                Type
+            </div>
+            <div class="header-tile">
+                Magazine size
+            </div>
+            <div class="header-tile">
+                Max ammo
+            </div>
+            <div class="header-tile">
+                Damage
+            </div>
+            <div class="header-tile">
+                Fire rate
+            </div>
+            <div class="header-tile">
+                Reload time
+            </div>
+        </div>
+        <div class="tile-container"></div>
+        <div class="message-container"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="guns.js"></script>
+</body>
+
+</html>

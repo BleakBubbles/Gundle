@@ -1,0 +1,284 @@
+@font-face {
+    font-family: "Minecraft";
+    src: url('Minecraft.eot');
+    src: url('Minecraft.eot') format('embedded-opentype'),
+    url('Minecraft.woff2') format('woff2'),
+    url('Minecraft.woff') format('woff'),
+    url('Minecraft.ttf') format(truetype);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    color: #000000;
+    font-family: "Minecraft", "PT Sans", Calibri, Tahoma, sans-serif;
+}
+
+html {
+    background: url('background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #000000;
+}
+
+.game-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-container {
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
+    width: 400px;
+    margin-bottom: 0px;
+}
+
+.input-container {
+    display:flex;
+    flex-direction: column;
+    position:relative;
+}
+
+.input {
+    image-rendering: pixelated;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    outline: 4px solid #757575;
+    border-radius: 2px;
+}
+
+.input:focus-within {
+    color:#ffffff;
+    outline: 4px solid white;
+}
+
+.input:focus-within img{
+    filter:brightness(100);
+}
+
+.input img {
+    filter: none;
+}
+
+#guess-field{
+    flex-grow: 2;
+    border: none;
+    color:#ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 40px;
+    background:inherit;
+    image-rendering: pixelated;
+}
+
+input:focus{
+    outline: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+button:hover {
+    transform: scale(1.25);
+}
+.list {
+    outline: 5px solid black;
+    position:absolute;
+    top:100%;
+    width: 100%;
+    z-index: 2;
+    border-radius: 2px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+    list-style: none;
+    display:flex;
+    flex-direction: column;
+    place-content: left;
+    background-color: #000000;
+  }
+.list:empty {
+    outline:none;
+}
+.list-container {
+    z-index: 1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    image-rendering: pixelated;
+    padding-left: 10px;
+}
+.list-items {
+    width:100%;
+    flex-shrink: 5;
+    color: #ffffff;
+    padding: 20px 15px;
+  }
+.image-items {
+    flex-shrink: 0;
+}
+.list-container:hover{
+    background-color: #757575;
+  }
+.list-container:hover img {
+    filter: drop-shadow(2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 -2px 0 white);
+}
+.hl {
+    background-color: #757575;
+}
+
+.hl img{
+    filter: drop-shadow(2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 -2px 0 white);
+}
+
+.tile-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+}
+
+.header-container{
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+}
+
+.header-tile{
+    word-wrap: break-all;
+    width: 80px;
+    height: 60px;
+    box-sizing:content-box;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    margin: 0px 9px;
+    font-size: 1.2vw;
+    border-bottom: solid 4px #ffffff;
+}
+
+.fade{
+    visibility:visible;
+    animation: 0.5s linear fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.tile{
+    visibility: hidden;
+    image-rendering: pixelated;
+    word-wrap: break-all;
+    width: 80px;
+    height: 80px;
+    box-sizing:content-box;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    margin: 5px;
+    border-radius: 2px;
+}
+
+.flip{
+    visibility: visible !important;
+    animation: 0.5s linear flipping;
+}
+
+@keyframes flipping {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.correct{
+    background-color: #538d4e;
+    border:solid 4px #ffffff;   
+}
+
+.close{
+    background-color: #fdc912;
+    border: solid 4px #ffffff;
+}
+
+.incorrect{
+    background-color: #d8452a;
+    border: solid 4px #ffffff;
+}
+
+.up{
+    image-rendering: pixelated;
+    background-image: url('up_arrow.png');
+    background-size: contain;
+}
+
+.down{
+    image-rendering: pixelated;
+    background-image: url('down_arrow.png');
+    background-size: contain;
+}
+
+.tile img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 -2px 0 white);
+}
+
+.big {
+    font-size: 1.8vw;
+}
+
+.small {
+    font-size: 0.9vw;
+}
