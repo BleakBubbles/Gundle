@@ -10,44 +10,48 @@
 <body onload="randomGun()">
     <div class="game-container">
         <div class="title-container">
-            <img src="gundle.png" , alt="", width="400px">
+            <img src="images/gundle.png" , alt="", width="400px">
         </div>
         <div class="input-container">
-            <div class="input">
+            <div class="input" tabindex="100">
                 <a class="wiki-link", href = "https://enterthegungeon.fandom.com/wiki/Guns", target="_blank", rel="noopener noreferrer">
-                    <img id = "gun-icon" src = "gun_icon.png" alt = "" border = "0" width = "60px"/>
+                    <img class = "input-icon" id = "gun-icon" src = "images/gun_icon.png" alt = "" border = "0" width = "60px"/>
                 </a>
-                <input type="text" id="guess-field" autofocus="true" placeholder="Enter the Gun" onblur="removeElements()">
+                <input type="text" id="guess-field" autofocus="true" placeholder="Enter the Gun">
                 <button id="guess-button" onclick="guess()">
-                    <img class="arrow" src="arrow_2.png" alt="" border="0" height="40px"/>
+                    <img class="input-icon" id = "arrow" src="images/arrow_2.png" alt="" border="0" height="40px"/>
                 </button>
             </div>
             <div class="list"></div>
-        </div>
-        <div class="header-container">
-            <div class="header-tile">
-                Gun
-            </div>
-            <div class="header-tile">
-                Quality
-            </div>
-            <div class="header-tile">
-                Type
-            </div>
-            <div class="header-tile">
-                Magazine size
-            </div>
-            <div class="header-tile">
-                Max ammo
-            </div>
-            <div class="header-tile">
-                Damage
-            </div>
-            <div class="header-tile">
-                Fire rate
-            </div>
-            <div class="header-tile">
-                Reload time
+            <div class="header-container">
+                <div class="header-tile">
+                    Gun
+                </div>
+                <div class="header-tile">
+                    Quality
+                </div>
+                <div class="header-tile">
+                    Type
+                </div>
+                <div class="header-tile">
+                    Magazine size
+                </div>
+                <div class="header-tile">
+                    Max ammo
+                </div>
+                <div class="header-tile">
+                    Damage
+                </div>
+                <div class="header-tile">
+                    Fire rate
+                </div>
+                <div class="header-tile">
+                    Reload time
+                </div>
+                <div class="tooltip">
+                    ?
+                    <span class="tooltiptext">🟩: correct<br>🟥: incorrect<br>🟨: close<br>⬆️: higher<br>⬇️: lower</span>
+                </div>
             </div>
         </div>
         <div class="tile-container"></div>

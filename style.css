@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Minecraft";
-    src: url('Minecraft.eot');
-    src: url('Minecraft.eot') format('embedded-opentype'),
-    url('Minecraft.woff2') format('woff2'),
-    url('Minecraft.woff') format('woff'),
-    url('Minecraft.ttf') format(truetype);
+    src: url('fonts/Minecraft.eot');
+    src: url('fonts/Minecraft.eot') format('embedded-opentype'),
+    url('fonts/Minecraft.woff2') format('woff2'),
+    url('fonts/Minecraft.woff') format('woff'),
+    url('fonts/Minecraft.ttf') format(truetype);
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -16,7 +16,7 @@
 }
 
 html {
-    background: url('background.jpg') no-repeat center center fixed;
+    background: url('images/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -53,26 +53,18 @@ html {
     align-items: center;
     justify-content: center;
     background: #000000;
-    outline: 4px solid #757575;
+    outline: 4px solid #ffffff;
     border-radius: 2px;
 }
 
-.input:focus-within {
-    color:#ffffff;
-    outline: 4px solid white;
-}
-
-.input:focus-within img{
+.input img{
     filter:brightness(100);
-}
-
-.input img {
-    filter: none;
 }
 
 #guess-field{
     flex-grow: 2;
     border: none;
+    outline:none;
     color:#ffffff;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -80,11 +72,6 @@ html {
     padding-right: 15px;
     font-size: 40px;
     background:inherit;
-    image-rendering: pixelated;
-}
-
-input:focus{
-    outline: none;
 }
 
 button {
@@ -99,7 +86,7 @@ button:hover {
 .list {
     outline: 5px solid black;
     position:absolute;
-    top:100%;
+    top:52%;
     width: 100%;
     z-index: 2;
     border-radius: 2px;
@@ -173,7 +160,7 @@ button:hover {
     display: flex;
     flex-direction: row;
     justify-content: left;
-    align-items: left;
+    align-items: center;
 }
 
 .header-tile{
@@ -186,9 +173,38 @@ button:hover {
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    margin: 0px 9px;
+    margin: 5px 9px;
     font-size: 1.2vw;
     border-bottom: solid 4px #ffffff;
+}
+
+.tooltip{
+    position: absolute;
+    right:-20px;
+    display: inline-block;
+    color:#ffffff;
+    border-bottom: dotted 2px #ffffff;
+    font-size: 1.2vw;
+    margin: 5px;
+    text-align: center;
+}
+
+.tooltiptext{
+    width: 200px;
+    position: absolute;
+    visibility: hidden;
+    background-color: #000000;
+    text-align: left;
+    color:#ffffff;
+    font-size: 1.2vw;
+    border-radius: 4px;
+    padding: 10px;
+    outline: 4px solid #ffffff;
+    margin-left: 10px;
+}
+
+.tooltip:hover .tooltiptext{
+    visibility: visible;
 }
 
 .fade{
@@ -218,7 +234,7 @@ button:hover {
     align-items: center;
     color: #ffffff;
     margin: 5px;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .flip{
@@ -239,29 +255,32 @@ button:hover {
 }
 
 .correct{
-    background-color: #538d4e;
-    border:solid 4px #ffffff;   
+    background-color: #16c60c;
+    border:solid 4px #113a03;  
+    border:solid 4px #16c60c;  
 }
 
 .close{
-    background-color: #fdc912;
-    border: solid 4px #ffffff;
+    background-color: #fff100;
+    border: solid 4px #6c4904;
+    border: solid 4px #fff100;
 }
 
 .incorrect{
-    background-color: #d8452a;
-    border: solid 4px #ffffff;
+    background-color: #e81224;
+    border: solid 4px #460909;
+    border: solid 4px #e81224;
 }
 
 .up{
     image-rendering: pixelated;
-    background-image: url('up_arrow.png');
+    background-image: url('images/up_arrow.png');
     background-size: contain;
 }
 
 .down{
     image-rendering: pixelated;
-    background-image: url('down_arrow.png');
+    background-image: url('images/down_arrow.png');
     background-size: contain;
 }
 
@@ -269,6 +288,7 @@ button:hover {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    
     filter: drop-shadow(2px 0 0 white)
     drop-shadow(0 2px 0 white)
     drop-shadow(-2px 0 0 white)

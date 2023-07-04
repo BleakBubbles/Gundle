@@ -1,4 +1,5 @@
 let sortedGunList = ['38 Special', '3rd Party Controller', 'A.W.P.', 'AC-15', 'AK-47', 'AKEY-47', 'AU Gun', 'Abyssal Tentacle', 'Alien Engine', 'Alien Sidearm', 'Anvillain', 'BSG', 'Bait Launcher', 'Balloon Gun', 'Banana', 'Barrel', 'Bee Hive', 'Betrayer\'s Shield', 'Big Iron', 'Big Shotgun', 'Black Hole Gun', 'Blasphemy', 'Blooper', 'Blunderbuss', 'Bow', 'Boxing Glove', 'Brick Breaker', 'Bubble Blaster', 'Budget Revolver', 'Bullet Bore', 'Bullet', 'Bundle of Wands', 'Buzzkill', 'Cactus', 'Camera', 'Casey', 'Cat Claw', 'Chamber Gun', 'Charge Shot', 'Charmed Bow', 'Cobalt Hammer', 'Cold 45', 'Colt 1851', 'Com4nd0', 'Combined Rifle', 'Composite Gun', 'Compressed Air Tank', 'Corsair', 'Crescent Crossbow', 'Crestfaller', 'Crossbow', 'Crown of Guns', 'Dark Marker', 'Dart Gun', 'Deck4rd', 'Demon Head', 'Derringer', 'Devolver', 'Directional Pad', 'Disintegrator', 'Dragunfire', 'Dueling Laser', 'Dueling Pistol', 'Dungeon Eagle', 'Elephant Gun', 'Elimentaler', 'Evolver', 'Excaliber', 'Eye of the Beholster', 'Face Melter', 'Fightsabre', 'Finished Gun', 'Flame Hand', 'Flare Gun', 'Flash Ray', 'Fossilized Gun', 'Freeze Ray', 'Frost Giant', 'Gamma Ray', 'Gilded Hydra', 'Glacier', 'Glass Cannon', 'Grasschopper', 'Grenade Launcher', 'Grey Mauser', 'GuNNER', 'Gunbow', 'Gunderfury', 'Gungeon Ant', 'Gungine', 'Gunslinger\'s Ashes', 'Gunther', 'Gunzheng', 'H4mmer', 'Heck Blaster', 'Hegemony Carbine', 'Hegemony Rifle', 'Helix', 'Heroine', 'Hexagun', 'High Kaliber', 'Huntsman', 'Hyper Light Blaster', 'Ice Breaker', 'JK-47', 'Jolter', 'Klobbe', 'Knight\'s Gun', 'Kruller Glaive', 'Laser Lotus', 'Laser Rifle', 'Life Orb', 'Light Gun', 'Lil\' Bomber', 'Lower Case r', 'Luxin Cannon', 'M1', 'M16', 'M1911', 'MAC10', 'Machine Fist', 'Machine Pistol', 'Magic Lamp', 'Magnum', 'Mahoguny', 'Mailbox', 'Makarov', 'Makeshift Cannon', 'Marine Sidearm', 'Mass Shotgun', 'Mega Douser', 'Megahand', 'Microtransaction Gun', 'Mine Cutter', 'Molotov Launcher', 'Moonscraper', 'Mourning Star', 'Mr. Accretion Jr.', 'Mutation', 'Nail Gun', 'Old Goldie', 'Origuni', 'Particulator', 'Patriot', 'Pea Shooter', 'Phoenix', 'Pitchfork', 'Plague Pistol', 'Plunger', 'Polaris', 'Poxcannon', 'Proton Backpack', 'Prototype Railgun', 'Pulse Cannon', 'Quad Laser', 'RC Rocket', 'RPG', 'RUBE-ADYNE MK.II', 'RUBE-ADYNE Prototype', 'Rad Gun', 'Raiden Coil', 'Railgun', 'Rattler', 'Really Special Lute', 'Regular Shotgun', 'Robot\'s Left Hand', 'Robot\'s Right Hand', 'Rogue Special', 'Rubenstein\'s Monster', 'Rusty Sidearm', 'SAA', 'Sawed-Off', 'Science Cannon', 'Screecher', 'Serious Cannon', 'Shades\'s Revolver', 'Shell', 'Shellegun', 'Shock Rifle', 'Shotbow', 'Shotgrub', 'Shotgun Full of Hate', 'Shotgun Full of Love', 'Silencer', 'Siren', 'Skull Spitter', 'Sling', 'Slinger', 'Smiley\'s Revolver', 'Snakemaker', 'Sniper Rifle', 'Snowballer', 'Staff of Firepower', 'Starpew', 'Sticky Crossbow', 'Stinger', 'Stone Dome', 'Strafe Gun', 'Sunlight Javelin', 'Super Meat Gun', 'T-Shirt Cannon', 'Tangler', 'Teapot', 'Tear Jerker', 'Tetrominator', 'The Emperor', 'The Exotic', 'The Fat Line', 'The Judge', 'The Kiln', 'The Membrane', 'The Predator', 'The Scrambler', 'Thompson Sub-Machinegun', 'Thunderclap', 'Trank Gun', 'Trashcannon', 'Trick Gun', 'Trident', 'Triple Crossbow', 'Triple Gun', 'Turbo-Gun', 'Unfinished Gun', 'Unicorn Horn', 'VertebraeK-47', 'Void Core Assault Rifle', 'Void Core Cannon', 'Void Marshal', 'Void Shotgun', 'Vorpal Gun', 'Vulcan Cannon', 'Winchester Rifle', 'Winchester', 'Wind Up Gun', 'Witch Pistol', 'Wood Beam', 'Yari Launcher', 'Zilla Shotgun', 'Zorgun'];
+let userGunList = ['38 Special', '3rd Party Controller', 'A.W.P.', 'AC-15', 'AK-47', 'AKEY-47', 'AU Gun', 'Abyssal Tentacle', 'Alien Engine', 'Alien Sidearm', 'Anvillain', 'BSG', 'Bait Launcher', 'Balloon Gun', 'Banana', 'Barrel', 'Bee Hive', 'Betrayer\'s Shield', 'Big Iron', 'Big Shotgun', 'Black Hole Gun', 'Blasphemy', 'Blooper', 'Blunderbuss', 'Bow', 'Boxing Glove', 'Brick Breaker', 'Bubble Blaster', 'Budget Revolver', 'Bullet Bore', 'Bullet', 'Bundle of Wands', 'Buzzkill', 'Cactus', 'Camera', 'Casey', 'Cat Claw', 'Chamber Gun', 'Charge Shot', 'Charmed Bow', 'Cobalt Hammer', 'Cold 45', 'Colt 1851', 'Com4nd0', 'Combined Rifle', 'Composite Gun', 'Compressed Air Tank', 'Corsair', 'Crescent Crossbow', 'Crestfaller', 'Crossbow', 'Crown of Guns', 'Dark Marker', 'Dart Gun', 'Deck4rd', 'Demon Head', 'Derringer', 'Devolver', 'Directional Pad', 'Disintegrator', 'Dragunfire', 'Dueling Laser', 'Dueling Pistol', 'Dungeon Eagle', 'Elephant Gun', 'Elimentaler', 'Evolver', 'Excaliber', 'Eye of the Beholster', 'Face Melter', 'Fightsabre', 'Finished Gun', 'Flame Hand', 'Flare Gun', 'Flash Ray', 'Fossilized Gun', 'Freeze Ray', 'Frost Giant', 'Gamma Ray', 'Gilded Hydra', 'Glacier', 'Glass Cannon', 'Grasschopper', 'Grenade Launcher', 'Grey Mauser', 'GuNNER', 'Gunbow', 'Gunderfury', 'Gungeon Ant', 'Gungine', 'Gunslinger\'s Ashes', 'Gunther', 'Gunzheng', 'H4mmer', 'Heck Blaster', 'Hegemony Carbine', 'Hegemony Rifle', 'Helix', 'Heroine', 'Hexagun', 'High Kaliber', 'Huntsman', 'Hyper Light Blaster', 'Ice Breaker', 'JK-47', 'Jolter', 'Klobbe', 'Knight\'s Gun', 'Kruller Glaive', 'Laser Lotus', 'Laser Rifle', 'Life Orb', 'Light Gun', 'Lil\' Bomber', 'Lower Case r', 'Luxin Cannon', 'M1', 'M16', 'M1911', 'MAC10', 'Machine Fist', 'Machine Pistol', 'Magic Lamp', 'Magnum', 'Mahoguny', 'Mailbox', 'Makarov', 'Makeshift Cannon', 'Marine Sidearm', 'Mass Shotgun', 'Mega Douser', 'Megahand', 'Microtransaction Gun', 'Mine Cutter', 'Molotov Launcher', 'Moonscraper', 'Mourning Star', 'Mr. Accretion Jr.', 'Mutation', 'Nail Gun', 'Old Goldie', 'Origuni', 'Particulator', 'Patriot', 'Pea Shooter', 'Phoenix', 'Pitchfork', 'Plague Pistol', 'Plunger', 'Polaris', 'Poxcannon', 'Proton Backpack', 'Prototype Railgun', 'Pulse Cannon', 'Quad Laser', 'RC Rocket', 'RPG', 'RUBE-ADYNE MK.II', 'RUBE-ADYNE Prototype', 'Rad Gun', 'Raiden Coil', 'Railgun', 'Rattler', 'Really Special Lute', 'Regular Shotgun', 'Robot\'s Left Hand', 'Robot\'s Right Hand', 'Rogue Special', 'Rubenstein\'s Monster', 'Rusty Sidearm', 'SAA', 'Sawed-Off', 'Science Cannon', 'Screecher', 'Serious Cannon', 'Shades\'s Revolver', 'Shell', 'Shellegun', 'Shock Rifle', 'Shotbow', 'Shotgrub', 'Shotgun Full of Hate', 'Shotgun Full of Love', 'Silencer', 'Siren', 'Skull Spitter', 'Sling', 'Slinger', 'Smiley\'s Revolver', 'Snakemaker', 'Sniper Rifle', 'Snowballer', 'Staff of Firepower', 'Starpew', 'Sticky Crossbow', 'Stinger', 'Stone Dome', 'Strafe Gun', 'Sunlight Javelin', 'Super Meat Gun', 'T-Shirt Cannon', 'Tangler', 'Teapot', 'Tear Jerker', 'Tetrominator', 'The Emperor', 'The Exotic', 'The Fat Line', 'The Judge', 'The Kiln', 'The Membrane', 'The Predator', 'The Scrambler', 'Thompson Sub-Machinegun', 'Thunderclap', 'Trank Gun', 'Trashcannon', 'Trick Gun', 'Trident', 'Triple Crossbow', 'Triple Gun', 'Turbo-Gun', 'Unfinished Gun', 'Unicorn Horn', 'VertebraeK-47', 'Void Core Assault Rifle', 'Void Core Cannon', 'Void Marshal', 'Void Shotgun', 'Vorpal Gun', 'Vulcan Cannon', 'Winchester Rifle', 'Winchester', 'Wind Up Gun', 'Witch Pistol', 'Wood Beam', 'Yari Launcher', 'Zilla Shotgun', 'Zorgun'];
 var qualities = new Map();
 
 qualities.set('D', 0);
@@ -8,9 +9,11 @@ qualities.set('A', 3);
 qualities.set('S', 4);
 
 let input = document.getElementById("guess-field");
+let inputContainer = document.querySelector(".input");
 let listBox = document.querySelector(".list");
 let tileContainer = document.querySelector(".tile-container")
 let valid = false;
+let hasWon = false;
 let gIndex = -1;
 
 var lastSuggestionIndex = -1;
@@ -24,7 +27,7 @@ input.onkeyup = function (e) {
   }
   removeElements();
   let src = '';
-  for (let i of sortedGunList) {
+  for (let i of userGunList) {
     for (let gun of guns) {
       if (gun.name == i) {
         src = gun.src;
@@ -62,16 +65,16 @@ input.onkeyup = function (e) {
       list.appendChild(listItem);
       listBox.appendChild(list);
       let gicon = document.getElementById("gun-icon");
-      gicon.setAttribute("src", "gun_icon.png");
-      gicon.style.filter = "none";
+      gicon.setAttribute("src", "images/gun_icon.png");
+      gicon.className = "input-icon";
       gicon.style.filter = "brightness(100)"
       document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
     }
     else if (input.value == "") {
       let gicon = document.getElementById("gun-icon");
-      gicon.setAttribute("src", "gun_icon.png");
-      gicon.style.filter = "none";
-      gicon.style.filter = "brightness(100)"
+      gicon.setAttribute("src", "images/gun_icon.png");
+      gicon.style.filter = "brightness(100)";
+      gicon.className = "input-icon";
       valid = false;
       document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
     }
@@ -135,10 +138,6 @@ function synchroniseSuggestionsBox() {
   }
 }
 
-document.getElementsByClassName("input").onblur = function (e) {
-  removeElements();
-}
-
 listBox.onmousedown = function (e) {
   e.preventDefault();
 }
@@ -150,9 +149,58 @@ function displayNames(value, src, href) {
   let gicon = document.getElementById("gun-icon");
   gicon.setAttribute("src", src);
   gicon.style.filter = 'drop-shadow(2px 0 0 white)\ndrop-shadow(0 2px 0 white)\ndrop-shadow(-2px 0 0 white)\ndrop-shadow(0 -2px 0 white)';
+  gicon.className = "gun-icon";
   sIndex = -1;
   valid = true;
 }
+
+inputContainer.addEventListener("focusin", (event) => {
+  inputContainer.style.color = "#ffffff";
+  inputContainer.style.outline = "4px solid white";
+  Array.from(inputContainer.getElementsByTagName("img")).forEach((item) => {
+    if(item.className == "input-icon") {
+      item.style.filter = "brightness(100)";
+    }
+  })
+});
+
+inputContainer.addEventListener("focusout", (event) => {
+  let items = document.querySelectorAll(".list-container");
+  items.forEach((item) => {
+    item.remove();
+  })
+  inputContainer.style.color = "#757575";
+  inputContainer.style.outline = "4px solid #757575";
+  Array.from(inputContainer.getElementsByTagName("img")).forEach((item) => {
+    if(item.style.filter == "brightness(100)"){
+      item.style.filter = "none";
+    }
+  })
+});
+
+/*document.querySelector(".input").focusin = function(e){
+  console.log("yep");
+  e.target.style.color = "#ffffff";
+  e.target.style.outline = "4px solid white";
+  e.target.getElementsByTagName("img").forEach((item) => {
+    item.style.filter = "brightness(100)";
+  })
+}*/
+
+/*document.querySelector(".input").focusout = function(e) {
+  //clear all the items
+  console.log("nope");
+  let items = document.querySelectorAll(".list-container");
+  items.forEach((item) => {
+    item.remove();
+  })
+  e.target.style.color = "#757575";
+  e.target.style.outline = "4px solid #757575";
+  e.target.getElementsByTagName("img").forEach((item) => {
+    item.style.filter = "none";
+  })
+}*/
+
 function removeElements() {
   //clear all the items
   let items = document.querySelectorAll(".list-container");
@@ -179,6 +227,7 @@ function guess() {
     if (gun.name == name) {
       if (name == rnGun.name) {
         html += "<div class = 'tile correct'><img src='" + gun.src +"' title='" + name + "'/></div>";
+        hasWon = true;
       }
       else {
         html += "<div class = 'tile incorrect'><img src='" + gun.src +"' title='" + name + "'/></div>";
@@ -202,7 +251,7 @@ function guess() {
         html += "<div class = 'tile incorrect small'>" + gun.type + "</div>";
       }
       if (gun.magSize == rnGun.magSize) {
-        html += "<div class = 'tile correct big'>" + gun.magSize.toString() + "</div>";
+        html += "<div class = 'tile correct big'>" + (gun.magSize > 10000 ? "∞": gun.magSize.toString()) + "</div>";
       }
       else if (gun.magSize <= rnGun.magSize) {
         if (rnGun.magSize - gun.magSize <= 3){
@@ -214,14 +263,14 @@ function guess() {
       }
       else if (gun.magSize >= rnGun.magSize) {
         if (gun.magSize - rnGun.magSize <= 3){
-          html += "<div class = 'tile close down big'>" + gun.magSize.toString() + "</div>";
+          html += "<div class = 'tile close down big'>" + (gun.magSize > 10000 ? "∞" : gun.magSize.toString()) + "</div>";
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + gun.magSize.toString() + "</div>";
+          html += "<div class = 'tile incorrect down big'>" + (gun.magSize > 10000 ? "∞" : gun.magSize.toString()) + "</div>";
         }
       }
       if (gun.ammoCap == rnGun.ammoCap) {
-        html += "<div class = 'tile correct big'>" + gun.ammoCap.toString() + "</div>";
+        html += "<div class = 'tile correct big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
       }
       else if (gun.ammoCap <= rnGun.ammoCap) {
         if (rnGun.ammoCap - gun.ammoCap <= 20){
@@ -233,10 +282,10 @@ function guess() {
       }
       else if (gun.ammoCap >= rnGun.ammoCap) {
         if (gun.ammoCap - rnGun.ammoCap <= 20){
-          html += "<div class = 'tile close down big'>" + gun.ammoCap.toString() + "</div>";
+          html += "<div class = 'tile close down big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + gun.ammoCap.toString() + "</div>";
+          html += "<div class = 'tile incorrect down big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
         }
       }
       if (gun.damage == rnGun.damage) {
@@ -298,6 +347,10 @@ function guess() {
       }
       html += "</div>"
       tileContainer.insertAdjacentHTML('afterbegin', html);
+      const i = userGunList.indexOf(gun.name);
+      if (i > -1){
+        userGunList.splice(i, 1);
+      }
       break;
     }
   }
@@ -306,5 +359,5 @@ function guess() {
     setTimeout(() => {
       tile.classList.add('flip')
     }, 500 * index);
-  });
+  }); 
 }
