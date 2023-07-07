@@ -346,7 +346,7 @@ button:hover {
         opacity: 0;
     }
     100%{
-        transform:translateY(-583px);
+        transform:translateY(-80vh);
         opacity: 1;
     }
 }
