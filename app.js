@@ -29,15 +29,9 @@ input.onkeyup = function (e) {
     return;
   }
   removeElements();
-  let src = '';
   let foundGun = false;
   for (let i of userGunList) {
-    for (let gun of guns) {
-      if (gun.name == i) {
-        src = gun.src;
-        break;
-      }
-    }
+    let src = "images/guns/" + i + ".png";
     //convert input to lowercase and compare with each string
     if (i.toLowerCase() === input.value.toLowerCase() && input.value != "") {
       displayNames(i, src, i.replaceAll(" ", "_"));
@@ -57,13 +51,11 @@ input.onkeyup = function (e) {
       imageItem.setAttribute("src", src);
       imageItem.setAttribute("loading", "lazy");
       imageItem.style.width = '60px';
-      imageItem.style.cursor = "pointer";
-      imageItem.setAttribute("onclick", "displayNames('" + i + "', '" + src + "', '" + i.replaceAll(" ", "_") + "')");
+      list.style.cursor = "pointer";
+      list.setAttribute('onclick', 'displayNames("' + i + '", "' + src + '", "' + i.replaceAll(' ', '_') + '")');
       list.classList.add('list-container');
       //One common class name
       listItem.classList.add("list-items");
-      listItem.style.cursor = "pointer";
-      listItem.setAttribute("onclick", "displayNames('" + i + "', '" + src + "', '" + i.replaceAll(" ", "_") + "')");
       //display the value in array
       const text = document.createTextNode(i);
       listItem.appendChild(text);
@@ -71,14 +63,14 @@ input.onkeyup = function (e) {
       list.appendChild(listItem);
       listBox.appendChild(list);
       let gicon = document.getElementById("gun-icon");
-      gicon.setAttribute("src", "images/gun_icon.png");
+      gicon.setAttribute("src", "images/UI/gun_icon.png");
       gicon.className = "input-icon";
       gicon.style.filter = "brightness(100)"
       document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
     }
     else if (input.value == "") {
       let gicon = document.getElementById("gun-icon");
-      gicon.setAttribute("src", "images/gun_icon.png");
+      gicon.setAttribute("src", "images/UI/gun_icon.png");
       gicon.style.filter = "brightness(100)";
       gicon.className = "input-icon";
       valid = false;
@@ -132,7 +124,7 @@ input.onkeydown = function (e) {
       let src = choice.children.item(0).getAttribute('src');
       let name = choice.children.item(1).textContent;
       displayNames(name, src, name.replaceAll(" ", "_"));
-      choice.classList.remove(sIndex);
+      choice.classList.remove("hl");
     }
   }
 }
@@ -173,6 +165,7 @@ inputContainer.addEventListener("focusin", (event) => {
 });
 
 inputContainer.addEventListener("focusout", (event) => {
+  sIndex = -1;
   let items = document.querySelectorAll(".list-container");
   items.forEach((item) => {
     item.remove();
@@ -212,154 +205,158 @@ async function guess() {
   for (let gun of guns) {
     if (gun.name == name) {
       if (name == rnGun.name) {
-        html += "<div class = 'tile correct'><img src='" + gun.src +"' title='" + name + "'/></div>";
+        html += '<div class = "tile correct"><img src="images/guns/' + gun.name +'.png" title="' + name + '"/></div>';
         hasWon = true;
       }
       else {
-        html += "<div class = 'tile incorrect'><img src='" + gun.src +"' title='" + name + "'/></div>";
+        html += '<div class = "tile incorrect"><img src="images/guns/' + gun.name +'.png" title="' + name + '"/></div>';
       }
       if (qualities.get(gun.quality) - qualities.get(rnGun.quality) == 1) {
-        html += "<div class = 'tile close down big'>" + gun.quality + "</div>";
-        guess += "🟨";
+        html += '<div class = "tile close down big">' + gun.quality + '</div>';
+        guess += '🟨';
       }
       else if (qualities.get(rnGun.quality) - qualities.get(gun.quality) == 1){
-        html += "<div class = 'tile close up big'>" + gun.quality + "</div>";
-        guess += "🟨";
+        html += '<div class = "tile close up big">' + gun.quality + '</div>';
+        guess += '🟨';
+      }
+      else if (qualities.get(rnGun.quality) - qualities.get(gun.quality) > 1){
+        html += '<div class = "tile incorrect up big">' + gun.quality + '</div>';
+        guess += '⬛';
+      }
+      else if (qualities.get(gun.quality) - qualities.get(rnGun.quality) > 1){
+        html += '<div class = "tile incorrect down big">' + gun.quality + '</div>';
+        guess += '⬛';
       }
       else if (qualities.get(gun.quality) == qualities.get(rnGun.quality)) {
-        html += "<div class = 'tile correct big'>" + gun.quality + "</div>";
-        guess += "🟩";
-      }
-      else {
-        html += "<div class = 'tile incorrect big'>" + gun.quality + "</div>";
-        guess += "⬛";
+        html += '<div class = "tile correct big">' + gun.quality + '</div>';
+        guess += '🟩';
       }
       if (gun.type == rnGun.type) {
-        html += "<div class = 'tile correct small'>" + gun.type + "</div>";
-        guess += "🟩";
+        html += '<div class = "tile correct small">' + gun.type + '</div>';
+        guess += '🟩';
       }
       else {
-        html += "<div class = 'tile incorrect small'>" + gun.type + "</div>";
-        guess += "⬛";
+        html += '<div class = "tile incorrect small">' + gun.type + '</div>';
+        guess += '⬛';
       }
       if (gun.magSize == rnGun.magSize) {
-        html += "<div class = 'tile correct big'>" + (gun.magSize > 10000 ? "∞": gun.magSize.toString()) + "</div>";
-        guess += "🟩";
+        html += '<div class = "tile correct big">' + (gun.magSize > 10000 ? '∞': gun.magSize.toString()) + '</div>';
+        guess += '🟩';
       }
       else if (gun.magSize <= rnGun.magSize) {
         if (rnGun.magSize - gun.magSize <= 3){
-          html += "<div class = 'tile close up big'>" + gun.magSize.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close up big">' + gun.magSize.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect up big'>" + gun.magSize.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect up big">' + gun.magSize.toString() + '</div>';
+          guess += '⬛';
         }
       }
       else if (gun.magSize >= rnGun.magSize) {
         if (gun.magSize - rnGun.magSize <= 3){
-          html += "<div class = 'tile close down big'>" + (gun.magSize > 10000 ? "∞" : gun.magSize.toString()) + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close down big">' + (gun.magSize > 10000 ? '∞' : gun.magSize.toString()) + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + (gun.magSize > 10000 ? "∞" : gun.magSize.toString()) + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect down big">' + (gun.magSize > 10000 ? '∞' : gun.magSize.toString()) + '</div>';
+          guess += '⬛';
         }
       }
       if (gun.ammoCap == rnGun.ammoCap) {
-        html += "<div class = 'tile correct big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
-        guess += "🟩";
+        html += '<div class = "tile correct big">' + (gun.ammoCap > 10000 ? '∞': gun.ammoCap.toString()) + '</div>';
+        guess += '🟩';
       }
       else if (gun.ammoCap <= rnGun.ammoCap) {
         if (rnGun.ammoCap - gun.ammoCap <= 20){
-          html += "<div class = 'tile close up big'>" + gun.ammoCap.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close up big">' + gun.ammoCap.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect up big'>" + gun.ammoCap.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect up big">' + gun.ammoCap.toString() + '</div>';
+          guess += '⬛';
         }
       }
       else if (gun.ammoCap >= rnGun.ammoCap) {
         if (gun.ammoCap - rnGun.ammoCap <= 20){
-          html += "<div class = 'tile close down big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close down big">' + (gun.ammoCap > 10000 ? '∞': gun.ammoCap.toString()) + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect down big">' + (gun.ammoCap > 10000 ? '∞': gun.ammoCap.toString()) + '</div>';
+          guess += '⬛';
         }
       }
       if (gun.damage == rnGun.damage) {
-        html += "<div class = 'tile correct big'>" + gun.damage.toString() + "</div>";
-        guess += "🟩";
+        html += '<div class = "tile correct big">' + gun.damage.toString() + '</div>';
+        guess += '🟩';
       }
       else if (gun.damage <= rnGun.damage) {
         if (rnGun.damage - gun.damage <= 5){
-          html += "<div class = 'tile close up big'>" + gun.damage.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close up big">' + gun.damage.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect up big'>" + gun.damage.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect up big">' + gun.damage.toString() + '</div>';
+          guess += '⬛';
         }
       }
       else if (gun.damage >= rnGun.damage) {
         if (gun.damage - rnGun.damage <= 5){
-          html += "<div class = 'tile close down big'>" + gun.damage.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close down big">' + gun.damage.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + gun.damage.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect down big">' + gun.damage.toString() + '</div>';
+          guess += '⬛';
         }
       }
       if (gun.fireRate == rnGun.fireRate) {
-        html += "<div class = 'tile correct big'>" + gun.fireRate.toString() + "</div>";
-        guess += "🟩";
+        html += '<div class = "tile correct big">' + gun.fireRate.toString() + '</div>';
+        guess += '🟩';
       }
       else if (gun.fireRate <= rnGun.fireRate) {
         if (rnGun.fireRate - gun.fireRate <= 0.03){
-          html += "<div class = 'tile close up big'>" + gun.fireRate.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close up big">' + gun.fireRate.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect up big'>" + gun.fireRate.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect up big">' + gun.fireRate.toString() + '</div>';
+          guess += '⬛';
         }
       }
       else if (gun.fireRate >= rnGun.fireRate) {
         if (gun.fireRate - rnGun.fireRate <= 0.03){
-          html += "<div class = 'tile close down big'>" + gun.fireRate.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close down big">' + gun.fireRate.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + gun.fireRate.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect down big">' + gun.fireRate.toString() + '</div>';
+          guess += '⬛';
         }
       }
       if (gun.reloadTime == rnGun.reloadTime) {
-        html += "<div class = 'tile correct big'>" + gun.reloadTime.toString() + "</div>";
-        guess += "🟩";
+        html += '<div class = "tile correct big">' + gun.reloadTime.toString() + '</div>';
+        guess += '🟩';
       }
       else if (gun.reloadTime <= rnGun.reloadTime) {
         if (rnGun.reloadTime - gun.reloadTime <= 0.1){
-          html += "<div class = 'tile close up big'>" + gun.reloadTime.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close up big">' + gun.reloadTime.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect up big'>" + gun.reloadTime.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect up big">' + gun.reloadTime.toString() + '</div>';
+          guess += '⬛';
         }
       }
       else if (gun.reloadTime >= rnGun.reloadTime) {
         if (gun.reloadTime - rnGun.reloadTime <= 0.1){
-          html += "<div class = 'tile close down big'>" + gun.reloadTime.toString() + "</div>";
-          guess += "🟨";
+          html += '<div class = "tile close down big">' + gun.reloadTime.toString() + '</div>';
+          guess += '🟨';
         }
         else {
-          html += "<div class = 'tile incorrect down big'>" + gun.reloadTime.toString() + "</div>";
-          guess += "⬛";
+          html += '<div class = "tile incorrect down big">' + gun.reloadTime.toString() + '</div>';
+          guess += '⬛';
         }
       }
       html += "</div>"
