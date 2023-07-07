@@ -16,7 +16,7 @@ $.get("https://enterthegungeon.fandom.com/wiki/Guns", function(html) {
         let tds = $(elem).children();
         const gun = {
             index: index,
-            src: tds.filter('td:nth-child(1)').find('a').attr('href'),
+            src: tds.filter('td:nth-child(1)').find('a').attr('href').match(/(?<={).+?(?=revision)/s),
             name: tds.filter('td:nth-child(2)').first().text().trim(), 
             quality: tds.filter('td:nth-child(5)').find('img').attr('alt').charAt(0) == '1' ? 'S': tds.filter('td:nth-child(5)').find('img').attr('alt').charAt(0),
             type: tds.filter('td:nth-child(6)').first().text().trim(),
