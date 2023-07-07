@@ -31,7 +31,7 @@ input.onkeyup = function (e) {
   removeElements();
   let foundGun = false;
   for (let i of userGunList) {
-    let src = "images/guns/" + i + ".png";
+    let src = "images/guns/" + i.replace(/\.$/,"") + ".png";
     //convert input to lowercase and compare with each string
     if (i.toLowerCase() === input.value.toLowerCase() && input.value != "") {
       displayNames(i, src, i.replaceAll(" ", "_"));
@@ -205,11 +205,11 @@ async function guess() {
   for (let gun of guns) {
     if (gun.name == name) {
       if (name == rnGun.name) {
-        html += '<div class = "tile correct"><img src="images/guns/' + gun.name +'.png" title="' + name + '"/></div>';
+        html += '<div class = "tile correct"><img src="images/guns/' + gun.name.replace(/\.$/,"") +'.png" title="' + name + '"/></div>';
         hasWon = true;
       }
       else {
-        html += '<div class = "tile incorrect"><img src="images/guns/' + gun.name +'.png" title="' + name + '"/></div>';
+        html += '<div class = "tile incorrect"><img src="images/guns/' + gun.name.replace(/\.$/,"") +'.png" title="' + name + '"/></div>';
       }
       if (qualities.get(gun.quality) - qualities.get(rnGun.quality) == 1) {
         html += '<div class = "tile close down big">' + gun.quality + '</div>';
