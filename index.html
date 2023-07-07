@@ -8,6 +8,7 @@
 </head>
 
 <body onload="randomGun()">
+    <div class="blur-container"></div>
     <div class="game-container">
         <div class="title-container">
             <img src="images/gundle.png" , alt="", width="400px">
@@ -50,12 +51,20 @@
                 </div>
                 <div class="tooltip">
                     ?
-                    <span class="tooltiptext">🟩: correct<br>🟥: incorrect<br>🟨: close<br>⬆️: higher<br>⬇️: lower</span>
+                    <span class="tooltiptext">🟩: correct<br>⬛: incorrect<br>🟨: close<br>⬆️: higher<br>⬇️: lower</span>
                 </div>
             </div>
         </div>
         <div class="tile-container"></div>
-        <div class="message-container"></div>
+        <div class="message-container">
+            <img src="images/win_screen.png">
+            <button class="restart-button" onclick="refresh()">
+                <img src="images/restart_button.png" border="0" width="30px"/>
+            </button>
+            <button class="copy-button" onclick="copy()">
+                <img src="images/copy_button.png" border="0" width="30px"/>
+            </button>
+        </div>
     </div>
     <script src="app.js"></script>
     <script src="guns.js"></script>

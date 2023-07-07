@@ -13,8 +13,11 @@ let inputContainer = document.querySelector(".input");
 let listBox = document.querySelector(".list");
 let tileContainer = document.querySelector(".tile-container")
 let valid = false;
-let hasWon = false;
 let gIndex = -1;
+let clipboard = "I solved the Gundle in ";
+let tries = [];
+let counter = 0;
+let hasWon = false;
 
 var lastSuggestionIndex = -1;
 var sBoxHeight = 0;
@@ -27,6 +30,7 @@ input.onkeyup = function (e) {
   }
   removeElements();
   let src = '';
+  let foundGun = false;
   for (let i of userGunList) {
     for (let gun of guns) {
       if (gun.name == i) {
@@ -37,6 +41,8 @@ input.onkeyup = function (e) {
     //convert input to lowercase and compare with each string
     if (i.toLowerCase() === input.value.toLowerCase() && input.value != "") {
       displayNames(i, src, i.replaceAll(" ", "_"));
+      foundGun = true;
+      break;
     }
     else if (
       i.toLowerCase().includes(input.value.toLowerCase()) &&
@@ -79,6 +85,9 @@ input.onkeyup = function (e) {
       document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
     }
   }
+  if (!foundGun){
+    valid = false;
+  }
   lastSuggestionIndex = listBox.childElementCount - 1;
   sBoxHeight = listBox.clientHeight;
 };
@@ -117,9 +126,8 @@ input.onkeydown = function (e) {
   else if (e.keyCode === 13) {
     if (valid) {
       guess();
-      input.value = "";
     }
-    else {
+    else if(listBox.childElementCount > 0){
       let choice = listBox.children.item(sIndex);
       let src = choice.children.item(0).getAttribute('src');
       let name = choice.children.item(1).textContent;
@@ -178,29 +186,6 @@ inputContainer.addEventListener("focusout", (event) => {
   })
 });
 
-/*document.querySelector(".input").focusin = function(e){
-  console.log("yep");
-  e.target.style.color = "#ffffff";
-  e.target.style.outline = "4px solid white";
-  e.target.getElementsByTagName("img").forEach((item) => {
-    item.style.filter = "brightness(100)";
-  })
-}*/
-
-/*document.querySelector(".input").focusout = function(e) {
-  //clear all the items
-  console.log("nope");
-  let items = document.querySelectorAll(".list-container");
-  items.forEach((item) => {
-    item.remove();
-  })
-  e.target.style.color = "#757575";
-  e.target.style.outline = "4px solid #757575";
-  e.target.getElementsByTagName("img").forEach((item) => {
-    item.style.filter = "none";
-  })
-}*/
-
 function removeElements() {
   //clear all the items
   let items = document.querySelectorAll(".list-container");
@@ -214,12 +199,13 @@ function randomGun() {
   console.log(guns[gIndex].name);
 }
 
-function guess() {
+async function guess() {
   if (!valid) {
     return;
   }
   const name = input.value;
   let header = document.querySelector(".header-container");
+  let guess = "";
   header.classList.add("fade");
   const rnGun = guns[gIndex];
   let html = "<div class = 'row'>";
@@ -234,119 +220,152 @@ function guess() {
       }
       if (qualities.get(gun.quality) - qualities.get(rnGun.quality) == 1) {
         html += "<div class = 'tile close down big'>" + gun.quality + "</div>";
+        guess += "🟨";
       }
       else if (qualities.get(rnGun.quality) - qualities.get(gun.quality) == 1){
         html += "<div class = 'tile close up big'>" + gun.quality + "</div>";
+        guess += "🟨";
       }
       else if (qualities.get(gun.quality) == qualities.get(rnGun.quality)) {
         html += "<div class = 'tile correct big'>" + gun.quality + "</div>";
+        guess += "🟩";
       }
       else {
         html += "<div class = 'tile incorrect big'>" + gun.quality + "</div>";
+        guess += "⬛";
       }
       if (gun.type == rnGun.type) {
         html += "<div class = 'tile correct small'>" + gun.type + "</div>";
+        guess += "🟩";
       }
       else {
         html += "<div class = 'tile incorrect small'>" + gun.type + "</div>";
+        guess += "⬛";
       }
       if (gun.magSize == rnGun.magSize) {
         html += "<div class = 'tile correct big'>" + (gun.magSize > 10000 ? "∞": gun.magSize.toString()) + "</div>";
+        guess += "🟩";
       }
       else if (gun.magSize <= rnGun.magSize) {
         if (rnGun.magSize - gun.magSize <= 3){
           html += "<div class = 'tile close up big'>" + gun.magSize.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect up big'>" + gun.magSize.toString() + "</div>";
+          guess += "⬛";
         }
       }
       else if (gun.magSize >= rnGun.magSize) {
         if (gun.magSize - rnGun.magSize <= 3){
           html += "<div class = 'tile close down big'>" + (gun.magSize > 10000 ? "∞" : gun.magSize.toString()) + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect down big'>" + (gun.magSize > 10000 ? "∞" : gun.magSize.toString()) + "</div>";
+          guess += "⬛";
         }
       }
       if (gun.ammoCap == rnGun.ammoCap) {
         html += "<div class = 'tile correct big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
+        guess += "🟩";
       }
       else if (gun.ammoCap <= rnGun.ammoCap) {
         if (rnGun.ammoCap - gun.ammoCap <= 20){
           html += "<div class = 'tile close up big'>" + gun.ammoCap.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect up big'>" + gun.ammoCap.toString() + "</div>";
+          guess += "⬛";
         }
       }
       else if (gun.ammoCap >= rnGun.ammoCap) {
         if (gun.ammoCap - rnGun.ammoCap <= 20){
           html += "<div class = 'tile close down big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect down big'>" + (gun.ammoCap > 10000 ? "∞": gun.ammoCap.toString()) + "</div>";
+          guess += "⬛";
         }
       }
       if (gun.damage == rnGun.damage) {
         html += "<div class = 'tile correct big'>" + gun.damage.toString() + "</div>";
+        guess += "🟩";
       }
       else if (gun.damage <= rnGun.damage) {
         if (rnGun.damage - gun.damage <= 5){
           html += "<div class = 'tile close up big'>" + gun.damage.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect up big'>" + gun.damage.toString() + "</div>";
+          guess += "⬛";
         }
       }
       else if (gun.damage >= rnGun.damage) {
         if (gun.damage - rnGun.damage <= 5){
           html += "<div class = 'tile close down big'>" + gun.damage.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect down big'>" + gun.damage.toString() + "</div>";
+          guess += "⬛";
         }
       }
       if (gun.fireRate == rnGun.fireRate) {
         html += "<div class = 'tile correct big'>" + gun.fireRate.toString() + "</div>";
+        guess += "🟩";
       }
       else if (gun.fireRate <= rnGun.fireRate) {
         if (rnGun.fireRate - gun.fireRate <= 0.03){
           html += "<div class = 'tile close up big'>" + gun.fireRate.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect up big'>" + gun.fireRate.toString() + "</div>";
+          guess += "⬛";
         }
       }
       else if (gun.fireRate >= rnGun.fireRate) {
         if (gun.fireRate - rnGun.fireRate <= 0.03){
           html += "<div class = 'tile close down big'>" + gun.fireRate.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect down big'>" + gun.fireRate.toString() + "</div>";
+          guess += "⬛";
         }
       }
       if (gun.reloadTime == rnGun.reloadTime) {
         html += "<div class = 'tile correct big'>" + gun.reloadTime.toString() + "</div>";
+        guess += "🟩";
       }
       else if (gun.reloadTime <= rnGun.reloadTime) {
         if (rnGun.reloadTime - gun.reloadTime <= 0.1){
           html += "<div class = 'tile close up big'>" + gun.reloadTime.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect up big'>" + gun.reloadTime.toString() + "</div>";
+          guess += "⬛";
         }
       }
       else if (gun.reloadTime >= rnGun.reloadTime) {
         if (gun.reloadTime - rnGun.reloadTime <= 0.1){
           html += "<div class = 'tile close down big'>" + gun.reloadTime.toString() + "</div>";
+          guess += "🟨";
         }
         else {
           html += "<div class = 'tile incorrect down big'>" + gun.reloadTime.toString() + "</div>";
+          guess += "⬛";
         }
       }
       html += "</div>"
       tileContainer.insertAdjacentHTML('afterbegin', html);
+      tries.push(guess);
+      counter++;
       const i = userGunList.indexOf(gun.name);
       if (i > -1){
         userGunList.splice(i, 1);
@@ -354,10 +373,31 @@ function guess() {
       break;
     }
   }
+  input.value = "";
   const row = document.querySelector(".row").children;
-  Array.from(row).forEach((tile, index) => {
-    setTimeout(() => {
-      tile.classList.add('flip')
-    }, 500 * index);
-  }); 
+  for(let i = 0; i < row.length; i++){
+    row[i].classList.add('flip');
+    await sleep(500);
+  }
+  if(hasWon){
+    clipboard += (counter.toString() + " tries:\n\n" + tries.join("\n"));
+    document.querySelector(".message-container").classList.add('slideIn');
+    document.querySelector(".blur-container").classList.add('blur');
+    input.blur();
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function refresh(){
+  location.reload();
+}
+
+function copy(){
+  if(!hasWon){
+    return;
+  }
+  navigator.clipboard.writeText(clipboard);
 }

@@ -31,6 +31,31 @@ html {
     align-items: center;
 }
 
+.blur-container{
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index: 2;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.blur{
+    visibility: visible;
+    animation:0.5s ease-out blur forwards;
+}
+
+@keyframes blur {
+    0%{
+        backdrop-filter: brightness(100%);
+    }
+    100%{
+        backdrop-filter: brightness(25%);
+    }
+}
+
 .title-container {
     text-align: center;
     padding-top: 5vh;
@@ -83,12 +108,13 @@ button {
 button:hover {
     transform: scale(1.25);
 }
+
 .list {
     outline: 5px solid black;
     position:absolute;
     top:52%;
     width: 100%;
-    z-index: 2;
+    z-index: 1;
     border-radius: 2px;
     max-height: 300px;
     overflow-y: auto;
@@ -255,21 +281,18 @@ button:hover {
 }
 
 .correct{
-    background-color: #16c60c;
-    border:solid 4px #113a03;  
-    border:solid 4px #16c60c;  
+    background-color: #14b52c;
+    border:solid 4px #14b52c;  
 }
 
 .close{
-    background-color: #fff100;
-    border: solid 4px #6c4904;
-    border: solid 4px #fff100;
+    background-color: #fbe700;
+    border: solid 4px #fbe700;
 }
 
 .incorrect{
-    background-color: #e81224;
-    border: solid 4px #460909;
-    border: solid 4px #e81224;
+    background-color: #3a3a3c;
+    border: solid 4px #3a3a3c;
 }
 
 .up{
@@ -301,4 +324,47 @@ button:hover {
 
 .small {
     font-size: 0.9vw;
+}
+
+.message-container{
+    position:fixed;
+    z-index: 3;
+    width:384px;
+    height:494px;
+    top: 100%;
+    overflow: hidden;
+    image-rendering: pixelated;
+}
+
+.slideIn{
+    animation: 0.5s ease-out slideIn forwards;
+}
+
+@keyframes slideIn{
+    0%{
+        transform: translateY(0px);
+        opacity: 0;
+    }
+    100%{
+        transform:translateY(-583px);
+        opacity: 1;
+    }
+}
+
+.restart-button{
+    position:absolute;
+    width: 30px;
+    height: 28px;
+    left:90px;
+    bottom:100px;
+    padding: 0;
+}
+
+.copy-button{
+    position:absolute;
+    width: 30px;
+    height:28px;
+    left:90px;
+    bottom:68px;
+    padding: 0;
 }
