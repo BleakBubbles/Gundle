@@ -13,12 +13,15 @@ let input = document.getElementById("guess-field");
 let inputContainer = document.querySelector(".input");
 let listBox = document.querySelector(".list");
 let tileContainer = document.querySelector(".tile-container")
+let messageContainer = document.querySelector(".message-container");
+let blurContainer = document.querySelector(".blur-container");
 let valid = false;
 let gIndex = -1;
 let clipboard = "I solved the Gundle in ";
 let tries = [];
 let counter = 0;
 let hasWon = false;
+let up = false;
 
 var lastSuggestionIndex = -1;
 var sBoxHeight = 0;
@@ -382,12 +385,61 @@ async function guess() {
   }
   if(hasWon){
     clipboard += (counter.toString() + " tries:\n\n" + tries.join("\n"));
-    document.querySelector(".message-container").classList.add('slideIn');
-    document.querySelector(".blur-container").classList.add('blur');
-    input.blur();
+    messageContainer.classList.add('slideIn');
+    blurContainer.classList.add('blur');
+    up = true;
+    input.disabled = true;
   }
   valid = false;
 }
+
+blurContainer.addEventListener("click", (event) => {
+  if(!up) return;
+  messageContainer.animate(
+    {
+      transform: ["translateY(-80vh)", "translateY(-12vh)"],
+    },
+    {
+      duration: 250,
+      timingFunction: "ease-in",
+      fill: "forwards"
+    },
+    );
+  blurContainer.animate({
+    opacity: [1, 0],
+  },
+  {
+    duration: 250,
+    timingFunction: "ease-in",
+    fill:"forwards"
+  },
+  );
+  up = false;
+});
+
+messageContainer.addEventListener("click", (event) => {
+  if(up) return;
+  messageContainer.animate(
+    {
+      transform: ["translateY(-12vh)", "translateY(-80vh)"],
+    },
+    {
+      duration: 250,
+      timingFunction: "ease-out",
+      fill: "forwards"
+    },
+    );
+  blurContainer.animate({
+    opacity: [0, 1],
+  },
+  {
+    duration: 250,
+    timingFunction: "ease-out",
+    fill:"forwards"
+  },
+  );
+  up = true;
+});
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
