@@ -89,6 +89,7 @@ var sIndex = -1;
 input.onkeydown = function (e) {
   //down key
   if (e.keyCode === 40) {
+    if(listBox.childElementCount == 0) return;
     if (sIndex === -1) {
       listBox.children.item(++sIndex).classList.add("hl");
     }
@@ -105,6 +106,7 @@ input.onkeydown = function (e) {
   }
   //up key
   else if (e.keyCode === 38) {
+    if(listBox.childElementCount == 0) return;
     if (sIndex <= 0) {
       sIndex = lastSuggestionIndex;
       listBox.children.item(sIndex).classList.add("hl");
@@ -120,12 +122,13 @@ input.onkeydown = function (e) {
     if (valid) {
       guess();
     }
-    else if(listBox.childElementCount > 0){
+    else if(listBox.childElementCount > 0 && sIndex > -1){
       let choice = listBox.children.item(sIndex);
-      let src = choice.children.item(0).getAttribute('src');
       let name = choice.children.item(1).textContent;
+      let src = "images/guns/" + name.replace(/\.$/,"") +".png";
       displayNames(name, src, name.replaceAll(" ", "_"));
       choice.classList.remove("hl");
+      sIndex = -1;
     }
   }
 }
@@ -383,6 +386,7 @@ async function guess() {
     document.querySelector(".blur-container").classList.add('blur');
     input.blur();
   }
+  valid = false;
 }
 
 function sleep(ms) {
