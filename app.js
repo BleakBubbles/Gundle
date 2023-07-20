@@ -196,7 +196,6 @@ function removeElements() {
 
 function randomGun() {
   gIndex = Math.floor(Math.random() * sortedGunList.length);
-  console.log(guns[gIndex].name);
 }
 
 async function guess() {
