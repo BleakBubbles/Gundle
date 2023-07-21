@@ -38,7 +38,6 @@ input.onkeyup = function (e) {
     let src = "images/guns/" + i.replace(/\.$/,"") + ".png";
     //convert input to lowercase and compare with each string
     if (i.toLowerCase() === input.value.toLowerCase() && input.value != "") {
-      displayNames(i, src, i.replaceAll(" ", "_"));
       foundGun = true;
       break;
     }
@@ -78,11 +77,13 @@ input.onkeyup = function (e) {
       gicon.style.filter = "brightness(100)";
       gicon.className = "input-icon";
       valid = false;
+      sIndex = -1;
       document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
     }
   }
   if (!foundGun){
     valid = false;
+    sIndex = -1;
   }
   lastSuggestionIndex = listBox.childElementCount - 1;
   sBoxHeight = listBox.clientHeight;
@@ -383,7 +384,7 @@ async function guess() {
     await sleep(500);
   }
   if(hasWon){
-    clipboard += (counter.toString() + " tries:\n\n" + tries.join("\n"));
+    clipboard += (counter.toString() + " tries:\n\n" + tries.join("\n")) + "\n" + guns[gIndex].name;
     messageContainer.classList.add('slideIn');
     blurContainer.classList.add('blur');
     up = true;
