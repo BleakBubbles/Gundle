@@ -163,7 +163,7 @@ function displayNames(value, src, href) {
 }
 
 inputContainer.addEventListener("focusin", (event) => {
-  inputContainer.style.color = "#ffffff";
+  input.style.color = "#ffffff";
   inputContainer.style.outline = "4px solid white";
   Array.from(inputContainer.getElementsByTagName("img")).forEach((item) => {
     if(item.className == "input-icon") {
@@ -178,7 +178,7 @@ inputContainer.addEventListener("focusout", (event) => {
   items.forEach((item) => {
     item.remove();
   })
-  inputContainer.style.color = "#757575";
+  input.style.color = "#757575";
   inputContainer.style.outline = "4px solid #757575";
   Array.from(inputContainer.getElementsByTagName("img")).forEach((item) => {
     if(item.style.filter == "brightness(100)"){
