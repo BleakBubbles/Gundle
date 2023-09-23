@@ -68,45 +68,12 @@ html {
 .heart-container {
     display:flex;
     flex-direction: row;
-    height: 60px;
     padding-bottom: 4vh;
 }
 
 .heart {
-    display: block;
     image-rendering: pixelated;
     padding:2px;
-}
-
-.full-heart{
-    display: inline;
-    position:absolute;
-    top:0px;
-    left:0px;
-}
-
-.half-heart{
-    display: inline;
-    position:absolute;
-    top:0px;
-    left:0px;
-    visibility: hidden;
-}
-
-.empty-heart{
-    display: inline;
-    position:absolute;
-    top:0px;
-    left:0px;
-    visibility: hidden;
-}
-
-.breaking-heart{
-    display: inline;
-    position:absolute;
-    top:0px;
-    left:0px;
-    visibility: hidden;
 }
 
 .input-container {
