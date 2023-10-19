@@ -121,6 +121,10 @@ button:hover {
     transform: scale(1.25);
 }
 
+button:active {
+    transform:scale(1);
+}
+
 .list {
     outline: 5px solid black;
     position:absolute;
