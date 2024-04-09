@@ -29,7 +29,7 @@ var sBoxHeight = 0;
 input.onkeyup = function (e) {
   //loop through above array
   //Initially remove all elements ( so if user erases a letter or adds new letter then clean previous outputs)
-  if (e.keyCode === 40 || e.keyCode === 38) {
+  if (e.keyCode === 40 || e.keyCode === 38 || e.keyCode === 13) {
     return;
   }
   removeElements();
@@ -39,9 +39,8 @@ input.onkeyup = function (e) {
     //convert input to lowercase and compare with each string
     if (i.toLowerCase() === input.value.toLowerCase() && input.value != "") {
       foundGun = true;
-      break;
     }
-    else if (
+    if (
       i.toLowerCase().includes(input.value.toLowerCase()) &&
       input.value != ""
     ) {
