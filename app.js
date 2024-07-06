@@ -68,7 +68,7 @@ input.onkeyup = function (e) {
       gicon.setAttribute("src", "images/UI/gun_icon.png");
       gicon.className = "input-icon";
       gicon.style.filter = "brightness(100)"
-      document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
+      document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.wiki.gg/wiki/Guns");
     }
     else if (input.value == "") {
       let gicon = document.getElementById("gun-icon");
@@ -77,7 +77,7 @@ input.onkeyup = function (e) {
       gicon.className = "input-icon";
       valid = false;
       sIndex = -1;
-      document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.fandom.com/wiki/Guns");
+      document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.wiki.gg/wiki/Guns");
     }
   }
   if (!foundGun){
@@ -152,7 +152,7 @@ listBox.onmousedown = function (e) {
 function displayNames(value, src, href) {
   input.value = value;
   removeElements();
-  document.querySelector(".wiki-link").setAttribute("href", "https://www.enterthegungeon.fandom.com/" + href);
+  document.querySelector(".wiki-link").setAttribute("href", "https://enterthegungeon.wiki.gg/wiki/" + href);
   let gicon = document.getElementById("gun-icon");
   gicon.setAttribute("src", src);
   gicon.style.filter = 'drop-shadow(2px 0 0 white)\ndrop-shadow(0 2px 0 white)\ndrop-shadow(-2px 0 0 white)\ndrop-shadow(0 -2px 0 white)';
